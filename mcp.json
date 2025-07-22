@@ -1,0 +1,8 @@
+{
+  "name": "reverse-text",
+  "description": "Text manipulation service with reverse and analysis tools",
+  "version": "1.0.0",
+  "category": "text-processing",
+  "port": 8000,
+  "healthPath": "/health"
+}
