@@ -4,7 +4,7 @@ Reverse Text MCP Server - FastMCP Implementation
 """
 
 import json
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from fastmcp import FastMCP
 from starlette.requests import Request
@@ -13,6 +13,7 @@ from starlette.responses import JSONResponse
 # Create FastMCP server
 mcp = FastMCP("Reverse Text MCP Server")
 
+
 @mcp.tool
 def reverse_text(text: str) -> str:
     """Reverse the characters in a text string"""
@@ -20,9 +21,10 @@ def reverse_text(text: str) -> str:
         "original_text": text,
         "reversed_text": text[::-1],
         "length": len(text),
-        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "timestamp": datetime.now(UTC).isoformat(),
     }
     return json.dumps(result, indent=2)
+
 
 @mcp.tool
 def text_info(text: str) -> str:
@@ -36,21 +38,15 @@ def text_info(text: str) -> str:
         "uppercase_count": sum(1 for c in text if c.isupper()),
         "lowercase_count": sum(1 for c in text if c.islower()),
         "digit_count": sum(1 for c in text if c.isdigit()),
-        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "timestamp": datetime.now(UTC).isoformat(),
     }
     return json.dumps(info, indent=2)
 
+
 @mcp.custom_route("/health", methods=["GET"])
-async def health_check(request: Request):
+async def health_check(request: Request) -> JSONResponse:
     return JSONResponse({"status": "healthy"})
 
-def main():
-    """Main entry point"""
-    mcp.run(
-        transport="streamable-http",
-        host="0.0.0.0",
-        port=8000,
-    )
 
-if __name__ == "__main__":
-    main()
+# Create ASGI application for uvicorn
+app = mcp.http_app()

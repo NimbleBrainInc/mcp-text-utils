@@ -1,0 +1,22 @@
+# Always include these
+.venv/
+.git/
+.github/
+.pytest_cache/
+__pycache__/
+*.pyc
+.mypy_cache/
+.ruff_cache/
+.coverage
+tests/
+dist/
+build/
+*.egg-info/
+*.mcpb
+Makefile
+pytest.ini
+.env
+.env.*
+uv.lock
+.vscode/
+.idea/
