@@ -1,6 +1,6 @@
 {
   "manifest_version": "0.3",
-  "name": "ai.nimbletools/reverse-text",
+  "name": "@nimblebraininc/reverse-text",
   "version": "0.1.0",
   "description": "Text manipulation MCP service with reverse and analysis tools",
   "author": {
@@ -8,10 +8,10 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "server.py",
+    "entry_point": "mcp_reverse_text.server",
     "mcp_config": {
       "command": "python",
-      "args": ["${__dirname}/server.py"]
+      "args": ["-m", "mcp_reverse_text.server"]
     }
   }
 }

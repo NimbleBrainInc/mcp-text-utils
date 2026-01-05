@@ -50,3 +50,7 @@ async def health_check(request: Request) -> JSONResponse:
 
 # Create ASGI application for uvicorn
 app = mcp.http_app()
+
+# Stdio entrypoint for Claude Desktop / mpak
+if __name__ == "__main__":
+    mcp.run()

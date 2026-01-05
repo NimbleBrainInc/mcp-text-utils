@@ -61,7 +61,7 @@ addopts = [
 ]
 
 [tool.coverage.run]
-source = ["server"]
+source = ["src/mcp_reverse_text"]
 branch = true
 
 [tool.coverage.report]
