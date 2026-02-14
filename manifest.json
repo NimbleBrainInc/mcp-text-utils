@@ -1,17 +1,67 @@
 {
-  "manifest_version": "0.3",
-  "name": "@nimblebraininc/reverse-text",
+  "manifest_version": "0.4",
+  "name": "@nimblebraininc/text-utils",
   "version": "0.1.0",
-  "description": "Text manipulation MCP service with reverse and analysis tools",
+  "description": "Text manipulation toolkit with reverse, case conversion, slugify, URL extraction, truncation, and token counting",
   "author": {
-    "name": "NimbleBrain Inc"
+    "name": "NimbleBrain Inc",
+    "email": "hello@nimblebrain.ai"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NimbleBrainInc/mcp-text-utils"
   },
   "server": {
     "type": "python",
-    "entry_point": "mcp_reverse_text.server",
+    "entry_point": "mcp_text_utils.server",
     "mcp_config": {
       "command": "python",
-      "args": ["-m", "mcp_reverse_text.server"]
+      "args": [
+        "-m",
+        "mcp_text_utils.server"
+      ]
+    }
+  },
+  "tools": [
+    {
+      "name": "reverse_text",
+      "description": "Reverse the characters in a text string"
+    },
+    {
+      "name": "text_info",
+      "description": "Analyze a text string: word count, character breakdown, line count"
+    },
+    {
+      "name": "transform_case",
+      "description": "Convert text between case formats (snake_case, camelCase, kebab-case, etc.)"
+    },
+    {
+      "name": "slugify",
+      "description": "Convert text into a URL-safe slug"
+    },
+    {
+      "name": "extract_urls",
+      "description": "Extract all URLs from a block of text"
+    },
+    {
+      "name": "truncate",
+      "description": "Truncate text at a word boundary with a configurable suffix"
+    },
+    {
+      "name": "count_tokens",
+      "description": "Estimate the token count for a text string"
+    }
+  ],
+  "_meta": {
+    "org.mpaktrust": {
+      "mtf_version": "0.1",
+      "permissions": {
+        "filesystem": "none",
+        "network": "none",
+        "environment": "none",
+        "subprocess": "none",
+        "native": "none"
+      }
     }
   }
 }
