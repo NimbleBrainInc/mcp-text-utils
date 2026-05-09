@@ -1,6 +1,6 @@
 [project]
 name = "mcp-text-utils"
-version = "0.2.0"
+version = "0.2.1"
 description = "Text manipulation toolkit MCP server"
 readme = "README.md"
 license = {text = "MIT"}

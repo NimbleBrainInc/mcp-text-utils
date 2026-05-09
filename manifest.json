@@ -1,7 +1,7 @@
 {
   "manifest_version": "0.4",
   "name": "@nimblebraininc/text-utils",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Text manipulation toolkit with reverse, case conversion, slugify, URL extraction, truncation, and token counting",
   "author": {
     "name": "NimbleBrain Inc",
