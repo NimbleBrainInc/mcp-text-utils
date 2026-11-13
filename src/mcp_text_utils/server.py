@@ -5,6 +5,7 @@ import re
 import unicodedata
 
 from fastmcp import FastMCP
+from fastmcp.exceptions import ToolError
 
 from .api_models import (
     CountTokensResponse,
@@ -70,7 +71,7 @@ def transform_case(text: str, target: str) -> TransformCaseResponse:
     """
     if target not in _VALID_CASES:
         msg = f"Unknown target case '{target}'. Valid: {', '.join(_VALID_CASES)}"
-        raise ValueError(msg)
+        raise ToolError(msg)
 
     detected = detect_case(text)
     words = split_words(text)

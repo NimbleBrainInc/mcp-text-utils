@@ -103,8 +103,11 @@ async def test_transform_case_to_title(mcp_server):
 @pytest.mark.asyncio
 async def test_transform_case_invalid_target(mcp_server):
     async with Client(mcp_server) as client:
-        with pytest.raises(Exception, match="Unknown target case"):
-            await client.call_tool("transform_case", {"text": "hello", "target": "invalid_case"})
+        result = await client.call_tool(
+            "transform_case", {"text": "hello", "target": "invalid_case"}, raise_on_error=False
+        )
+        assert result.is_error
+        assert "Unknown target case 'invalid_case'" in result.content[0].text
 
 
 @pytest.mark.asyncio
