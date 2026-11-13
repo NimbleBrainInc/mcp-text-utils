@@ -1,6 +1,6 @@
 [project]
 name = "mcp-text-utils"
-version = "0.2.1"
+version = "0.3.0"
 description = "Text manipulation toolkit MCP server"
 readme = "README.md"
 license = {text = "MIT"}
@@ -19,7 +19,7 @@ classifiers = [
     "Topic :: Software Development :: Libraries",
 ]
 dependencies = [
-    "fastmcp>=2.14.0",
+    "fastmcp>=4.0.0",
     "pydantic>=2.0.0",
 ]
 
@@ -90,6 +90,8 @@ addopts = [
     "--strict-config",
     "--verbose",
 ]
+# A deprecated MCP capability (logging, sampling, roots under SEP-2577) fails the suite.
+filterwarnings = ["error::mcp.MCPDeprecationWarning"]
 
 [tool.coverage.run]
 source = ["src/mcp_text_utils"]
